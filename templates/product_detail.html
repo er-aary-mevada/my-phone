@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product.name }} - Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .gallery {
+            display: flex;
+            gap: 1em;
+            margin-bottom: 1em;
+        }
+        .gallery img {
+            width: 180px;
+            border-radius: 6px;
+            border: 1px solid #e3e3e3;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1em;
+            color: #007185;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .product-detail-container {
+            max-width: 600px;
+            margin: 2em auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            padding: 2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="product-detail-container">
+        <a href="/" class="back-link">&larr; Back to all phones</a>
+        <h1>{{ product.name }}</h1>
+        <div class="gallery">
+            {% for img in product.gallery %}
+                <img src="{{ img }}" alt="{{ product.name }} photo">
+            {% endfor %}
+        </div>
+        <p class="price">{{ product.price }}</p>
+        <p>{{ product.description }}</p>
+        <button class="add-to-cart-btn">Add to cart</button>
+    </div>
+</body>
+</html>
